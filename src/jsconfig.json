@@ -1,0 +1,9 @@
+//allows for cleaner importing of files
+{
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": [
+    "src"
+  ]
+}
