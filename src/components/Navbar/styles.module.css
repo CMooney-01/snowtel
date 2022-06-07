@@ -1,0 +1,29 @@
+.main {
+  margin-top: 0;
+  background-color: blueviolet;
+  height: 6vh;
+  display: flex;
+  flex-direction:row;
+}
+
+.logo {
+  margin-left: 20px;
+  margin-right: auto;
+  align-self: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.menuButton {
+  background: transparent;
+  border: none;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.icon {
+  height: 3vh;
+}
