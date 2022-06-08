@@ -1,30 +1,41 @@
+import { useState } from 'react';
 import menu from '../../assets/icons/menu.png';
 import mountain from '../../assets/icons/mountain.png';
 import styles from './styles.module.css';
 
-const handleClick = () => {
-  console.log('testing');
-}
-
 export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+    console.log(isMenuOpen);
+  }
+
   return (
-    <div className={styles.main}>
-      <a href="/" className={styles.logo}>
-        <img className={styles.icon} src={mountain} alt="Snowtel Logo"></img>
-      </a>
+    <nav className={styles.main}>
       
+      <div className={styles.navbar}>
+        <a href="/" className={styles.logo}>
+          <img className={styles.icon} src={mountain} alt="Snowtel Logo"></img>
+        </a>
 
-      {/* <ul>
-        <li>Accommodation</li>
-        <li>Restaurant</li>
-        <li>Things To Do</li>
-        <li>Contact Us</li>
-      </ul> */}
+        <p>powder lodge</p>
+        
+        <button className={styles.menuButton}>
+          <img className={styles.icon} src={menu} alt="Menu" onClick={handleClick}></img>
+        </button>
+      </div>
 
-      <button className={styles.menuButton}>
-        <img className={styles.icon} src={menu} alt="Menu" onClick={handleClick}></img>
-      </button>
+
+      <div className={isMenuOpen ? styles.dropdownOpen : styles.dropdownClosed}>
+
+        <a href="/accommodation" className={styles.dropdownItem}>Accommodation</a>
+        <a href="/restaurant" className={styles.dropdownItem}>Restaurant</a>
+        <a href="/todo" className={styles.dropdownItem}>Things To Do</a>
+        <a href="/contact" className={styles.dropdownItem}>Contact Us</a>
+ 
+      </div>
       
-    </div>
+    </nav>
   )
 }

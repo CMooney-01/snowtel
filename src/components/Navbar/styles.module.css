@@ -1,20 +1,48 @@
 .main {
   margin-top: 0;
   background-color: blueviolet;
-  height: 6vh;
+  min-height: 4vh;
+  padding: 1vh 0 1vh 0;
+  transition: min-height 1s ease-in;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.navbar {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
+}
+
+.dropdownClosed {
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-height: 0;
+  transition: max-height, 0.3s;
+}
+
+.dropdownOpen {
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  max-height: 350px;
+  transition: max-height, 0.3s;
+}
+
+.dropdownItem {
+  color: black;
+  font-size: 2rem;
+  padding: 2vh;
 }
 
 .logo {
   margin-left: 20px;
   margin-right: auto;
   align-self: center;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
 }
 
 .menuButton {
@@ -26,4 +54,11 @@ ul {
 
 .icon {
   height: 3vh;
+}
+
+@media
+(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
