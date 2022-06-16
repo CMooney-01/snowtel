@@ -30,8 +30,8 @@ export const Navbar = () => {
       <div className={isMenuOpen ? styles.dropdownOpen : styles.dropdownClosed}>
 
         <a href="/accommodation" className={styles.dropdownItem}>Accommodation</a>
-        <a href="/restaurant" className={styles.dropdownItem}>Restaurant</a>
-        <a href="/todo" className={styles.dropdownItem}>Things To Do</a>
+        <a href="/dining" className={styles.dropdownItem}>Restaurant</a>
+        <a href="/activities" className={styles.dropdownItem}>Things To Do</a>
         <a href="/contact" className={styles.dropdownItem}>Contact Us</a>
  
       </div>

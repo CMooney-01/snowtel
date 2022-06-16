@@ -1,0 +1,49 @@
+hr {
+  width: 90vw;
+  border-top: 0.5px solid black;
+}
+
+p {
+  margin: 0;
+  padding-bottom: 2vh;
+}
+
+.main {
+  text-align: center;
+}
+
+.homeImages {
+  max-width: 100vw;
+  margin: 1vh 0 2vh 0;
+}
+
+.findoutmoreCard {
+  width: 70%;
+  margin: 2vh auto 2vh auto;
+}
+
+.findoutmoreCard h4 {
+  color: black;
+  width: 90%;
+  font-size: .75rem;
+  margin: auto;
+}
+
+.findoutmoreCard p {
+  color: black;
+  width: 90%;
+  font-size: .75rem;
+  margin: auto;
+  padding: 5px 0;
+}
+
+.findoutmoreCard hr {
+  width: 50%;
+  margin-top: 3vh;
+}
+
+.findoutmoreImages {
+  max-width: 90%;
+  border-radius: 5px;
+  margin-top: 1.5vh;
+}
