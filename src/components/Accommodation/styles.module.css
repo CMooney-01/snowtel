@@ -23,3 +23,23 @@ input {
   gap: 2rem;
 }
 
+.datepickerWeek {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarWeek {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  margin: auto;
+}
+
+.calendarDay {
+  border: solid 1px;
+  max-width: 12vw;
+  height: 8vh;
+  overflow: hidden;
+}
