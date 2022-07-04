@@ -1,22 +1,48 @@
+p, h5 {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  text-align: center;
+  margin: 20px auto 20px auto;
+}
+
 .datepickerMonth {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   grid-row-gap: 2px;
+  grid-column-gap: 2px;
   margin: auto;
   width: 95vw;
 }
 
-.calendarWeek {
+.calendarHeader {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 1px;
-  margin: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.calendarDay {
-  border: solid 1px;
-  overflow: hidden;
-  width: 22vw;
+.confirmationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  width: 80vw;
+  margin: 3vh auto;
+}
+
+.confirmationDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    
+  border-style:  solid;
+  border-width: 1px;
+  border-radius: 10px;
+
+  padding: 5px;
+  width: 60vw;
   margin: auto;
 }

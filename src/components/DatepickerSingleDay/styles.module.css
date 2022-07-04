@@ -1,0 +1,16 @@
+.main {
+  
+}
+
+.selected {
+  background-color: rgb(182, 127, 226);
+}
+
+.calendarDay {
+  border: solid 1px;
+  overflow: hidden;
+  width: 12vw;
+  height: 10vh;
+  margin: auto;
+  text-align: center;
+}
