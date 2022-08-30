@@ -1,0 +1,52 @@
+body {
+  text-align: center;
+  margin: auto;
+}
+
+.customerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 75vw;
+  margin: auto;
+  margin-bottom: 1.5vh;
+}
+
+.customerDates {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 75vw;
+  margin: auto;
+  text-align: center;
+}
+
+.confirmationDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    
+  border-style:  solid;
+  border-width: 1px;
+  border-radius: 10px;
+
+  padding: 5px;
+  width: 60vw;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.invalidField {
+  border: 1px solid red;
+}
+
+.invalidFieldPrompt {
+  color: red;
+  font-size: .75rem;
+}
+
+.hidden {
+  display: none;
+}

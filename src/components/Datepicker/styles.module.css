@@ -23,26 +23,3 @@ p, h5 {
   justify-content: center;
   gap: 10px;
 }
-
-.confirmationContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-  width: 80vw;
-  margin: 3vh auto;
-}
-
-.confirmationDate {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-    
-  border-style:  solid;
-  border-width: 1px;
-  border-radius: 10px;
-
-  padding: 5px;
-  width: 60vw;
-  margin: auto;
-}

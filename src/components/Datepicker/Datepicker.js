@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BookingDetails } from '../BookingDetails/BookingDetails';
 import { DatepickerSingleDay } from '../DatepickerSingleDay/DatepickerSingleDay';
 import styles from './styles.module.css';
 
@@ -11,7 +12,8 @@ export const Datepicker = () => {
   const [currentMonth, setCurrentMonth] = useState(todaysMonth);
   //year state as an integer, 2022 = 2022
   const [currentYear, setCurrentYear] = useState(todaysYear);
-  
+
+  const [room, setRoom] = useState();
   const [checkIn, setCheckIn] = useState();
   const [checkOut, setCheckOut] = useState();
   
@@ -78,53 +80,23 @@ export const Datepicker = () => {
 
   populateMonth();
 
-  const confirmStay = () => {
-    if (!checkIn) {
-      return (
-        <h3>Please select a check in date.</h3>
-      )
-    }
-    if (!checkOut) {
-      return (
-        <h3>Please select a check out date.</h3>
-      )
-    }
-    if (checkIn && checkOut) {
-      // need to convert ids to readable dates for user confirmation...
-      const checkInDate = new Date(checkIn);
-      const checkOutDate = new Date(checkOut);
-
-      const checkInDateString = checkInDate.toDateString();
-      const checkOutDateString = checkOutDate.toDateString();
-      // need to figure out how many nights user is staying...
-      let lengthOfStay;
-      if (checkInDate.getMonth() === checkOutDate.getMonth()) {
-        lengthOfStay = checkOutDate.getDate() - checkInDate.getDate()
-      }
-
-      
-      return (
-        <div className={styles.confirmationContainer}>
-          <div className={styles.confirmationDate}>
-            <h5>Check in date: {checkInDateString}</h5>
-          </div>
-          <div className={styles.confirmationDate}>
-            <h5>Check out date: {checkOutDateString}</h5>
-          </div>
-          <div>
-            <p>You will be staying for {lengthOfStay} nights</p>
-          </div>
-        </div>
-      )
-    }
-  }
+  const data = {
+    checkIn: checkIn,
+    checkOut: checkOut,
+    monthInfo: monthInfo
+  };
 
   return (
     <div className={styles.main}>
-      <p>Check available dates</p>
+      <div>
+        Select room type:
+        <select value={room} onChange={(e) => setRoom(e.target.value)}>
+          <option value={'single'}>Single</option>
+          <option value={'double'}>Double</option>
+          <option value={'family'}>Family</option>
+        </select>
+      </div>
       <div className={styles.calendarHeader}>
-        
-        
         <button value='prev' onClick={(e) => handleClick(e.target.value)} >
          {'<< Prev'}
         </button>
@@ -141,7 +113,7 @@ export const Datepicker = () => {
       </div>  
       
       <div>
-        {confirmStay()}
+        <BookingDetails data={data} />
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Accommodation, Activities, Contact, Dining, Home } from '../../components';
+import { Accommodation, Activities, Contact, Dining, Home, Payment } from '../../components';
 
 //exporting from here (instead of export default at the bottom of the file)
 //means destructuring when importing as in index.js
@@ -11,6 +11,7 @@ export const App = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/activities" element={<Activities />} />
       <Route path="/dining" element={<Dining />} />
+      <Route path="/payment" element={<Payment />} />
    </Routes>
   );
 };
