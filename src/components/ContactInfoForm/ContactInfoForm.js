@@ -1,20 +1,28 @@
 import { useState } from 'react';
-import { useLoginFormValidator } from '../../hooks/useFormValidator';
+import { useNavigate } from 'react-router-dom';
+import { useLoginFormValidator } from '../../utils/useLoginFormValidator';
 import styles from './styles.module.css';
 
 export const ContactInfoForm = (props) => {
   //Passed in from Payment.js
-  const { checkIn, checkOut, bookingDates } = props;
-
+  const { checkIn, checkOut, bookingDates, roomCapacity } = props.props;
+  // On successful booking server response will be data = { bookingId, status: 200, message: "Success" }
+  // On failed booking server response will be data = { status: 500, message: "" }, message will indicate which query failed on server side
+  const [data, setData] = useState(null); 
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     checkIn: checkIn,
     checkOut: checkOut,
+    roomCapacity: roomCapacity,
     bookingDates: bookingDates,
     contactName: '',
     contactEmail: '',
     contactPhone: ''
   });
-
+  const navigate = useNavigate();
+  const navigateSuccess = (data) => {
+    navigate('/success', {state: {data}});
+  }
   const { errors, validateForm, onBlurField } = useLoginFormValidator(form);
 
   const onUpdateField = (e) => {
@@ -34,9 +42,36 @@ export const ContactInfoForm = (props) => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    setLoading(true);
     const { isValid } = validateForm({ form, errors, forceTouchErrors: true });
     if (!isValid) return;
-    alert(JSON.stringify(form, null, 2));
+    
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({"formData": form}),
+    };
+
+    console.log(form);
+    
+    fetch("/banana", requestOptions)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        if (data?.status === 200) {
+          console.log(data);
+          setLoading(false);
+          navigateSuccess(data);
+        }
+      });
+    //If server responds with success data, send to successful booking page
+
+
+    setLoading(false);
+    console.log(data);
   };
 
   return (
@@ -91,6 +126,10 @@ export const ContactInfoForm = (props) => {
   
       <div>
         <button type="submit" style={{marginBottom:'20px'}}>Book my stay!</button>
+      </div>
+
+      <div className={loading ? styles.hidden : ''}>
+        {data?.message}
       </div>
     </form>
   )

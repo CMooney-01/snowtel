@@ -1,18 +1,20 @@
-import { useNavigate } from 'react-router-dom';
+import { findDateValues } from '../../utils/findDateValues';
 import styles from './styles.module.css';
 
 export const BookingDetails = (data) => {
-  const { checkIn, checkOut, monthInfo } = data?.data || {};
+  const { checkIn, checkOut, monthInfo, roomCapacity } = data?.data || {};
   // props object that will be passed to payment page when confirming booking
   const props = {
     checkIn: checkIn || '',
     checkOut: checkOut || '',
+    roomCapacity: roomCapacity,
     bookingDates: []
   }
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const navigatePayment = () => {
-    navigate('/payment', {state: {props}});
+    console.log(findDateValues(checkIn, checkOut, monthInfo));
+    // navigate('/payment', {state: {props}});
   }
 
     if (!checkIn) {
@@ -48,7 +50,7 @@ export const BookingDetails = (data) => {
         
         for (let i = checkInDateInt; i < checkOutDateInt; i++) {
           // includes night of check in, but not night of the day of check out
-          bookedDates.push(new Date(checkInDate.getFullYear(), checkInDate.getMonth(), i));
+          bookedDates.push((new Date(checkInDate.getFullYear(), checkInDate.getMonth(), i).valueOf()));
         }
         //update state that will be sent to payment page
         props.bookingDates = bookedDates;
@@ -60,11 +62,11 @@ export const BookingDetails = (data) => {
         const checkInMonthDays = monthInfo[checkInDate.getMonth()].days;
         // push all dates from checkin month (eg 27th to 31st)
         for (let i = checkInDateInt; i <= checkInMonthDays; i++) {
-          bookedDates.push(new Date(checkInDate.getFullYear(), checkInDate.getMonth(), i));
+          bookedDates.push((new Date(checkInDate.getFullYear(), checkInDate.getMonth(), i).valueOf()));
         }
         // push all dates from checkout month (eg 1st to 3rd)
         for (let x = 1; x < checkOutDate.getDate(); x++) {
-          bookedDates.push(new Date(checkOutDate.getFullYear(), checkOutDate.getMonth(), x));
+          bookedDates.push((new Date(checkOutDate.getFullYear(), checkOutDate.getMonth(), x).valueOf()));
         }
         //update state that will be sent to payment page
         props.bookingDates = bookedDates;
